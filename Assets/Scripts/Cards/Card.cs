@@ -6,23 +6,7 @@ using System;
 
 public class Card : MonoBehaviour
 {
-
-    [Header("Card Atributes")]
-    [Space]
-    [Range(0, 100)]
-    [SerializeField] private int damage;
-    [Space]
-    [Range(0, 100)]
-    [SerializeField] private int health;
-    [Space]
-    [Range(0, 100)]
-    [SerializeField] private int mana;
-
-    [Header("Strings")]
-    [Space]
-    [SerializeField] private string cardName;
-    [Space]
-    [SerializeField] private string cardType;
+    public CardData card;
 
     [Header("Text Mesh Pro")]
     [Space]
@@ -35,21 +19,17 @@ public class Card : MonoBehaviour
     [SerializeField] private TMP_Text cardNameText;
     [Space]
     [SerializeField] private TMP_Text cardTypeText;
+    [Space]
+    [SerializeField] private int damage;
 
-
-    // Start is called before the first frame update
     void Start()
     {
+        damageText.text = card.attack.ToString();
+        healthText.text = card.health.ToString();
+        manaText.text = card.mana.ToString();
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        damageText.text = damage.ToString();
-        healthText.text = health.ToString();
-        manaText.text = mana.ToString();
-        cardNameText.text = cardName;
-        cardTypeText.text = cardType;
+        cardNameText.text = card.name;
+        cardTypeText.text = card.description;
+        damage = card.attack;
     }
 }
